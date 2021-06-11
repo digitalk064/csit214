@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.linting.pylintPath": "pylint_django",
+		"files.associations": {
+			"ostream": "cpp",
+			"vector": "cpp"
+		}
+	}
+}

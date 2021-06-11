@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <link rel="shortcut icon" href="{% static 'favicon.png' %}"/>
+  <title>UOW Room Booking</title>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <style type="text/css">
+    html, body
+    {
+      background-color: #191919;
+    }
+    .main-body
+    {
+      min-height: calc(100vh - 52px - 50px) !important;
+    }
+    footer
+    {
+      min-height: 20px !important;
+    }
+    .jumbotron {
+        background: #191919;
+        color: white;
+        padding-bottom: 10px;
+        margin-bottom: 0px !important;
+    }
+    .jumbotron p {
+        color: #d9ccee;
+        max-width: 75%;
+        margin: 1em auto 2em
+    }
+    .navbar+.jumbotron {
+        margin-bottom: 0px !important;
+    }
+    .navbar{
+        margin-bottom: 0px !important;
+    }
+    .jumbotron .lang-logo {
+        display: block;
+        border-radius: 50%;
+        overflow: hidden;
+        max-width: 150px;
+        height: auto;
+        margin: auto;
+        position: relative;
+    }
+    .jumbotron .lang-logo img {
+        max-width: 100%
+    }
+    .btn-lol{
+        background: #ffffff;
+        border-color: #ff0000
+    }
+    .alert
+    {
+      margin-bottom: 0px;
+    }
+    /* Workaround for style conflict */
+    .alert-error /* Supposed to be alert-danger, just copy alert-danger content into this */
+    {
+      color:#721c24;
+      background-color:#f8d7da;
+      border-color:#f5c6cb;
+    }
+    .invalid-feedback
+    {
+      color:red !important;
+      font-size:15px !important;
+      max-height: 2px;
+    }
+    .is-invalid
+    {
+      border-color:red !important;
+    }
+  </style>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li style = "margin-right: 5px;">
+        <img alt = "logo" src="{% static 'logo_uow_white.png'%}" style = "width:150px;">
+      </li>
+      <li class="{{home_page}}">
+        <a href="/"><span class="glyphicon glyphicon-home"></span> Rooms</a>
+      </li>
+      <!--<li class = "{{rooms}}"><a href="/rooms">Rooms</a></li> !-->
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {% if not user.is_authenticated %}
+      <!--
+      <li class="navbar-right">
+        <a href="{% url 'register' %}">Register</a>
+      </li>
+      -->
+      <li class="navbar-right">
+        <a href="{% url 'login' %}">Login </a>
+      </li>
+      {% else %}
+      <li class="navbar-right">
+        <a href="{% url 'logout' %}">Logout ({{user.get_username}})</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+<div class="main-body">
+{% if messages %}
+  {% for message in messages %}
+    <div class = "alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+{% block content %}{% endblock %}
+</div>
+</body>
+
+<footer>
+  <div id = "footer_support" style="margin-left: auto; margin-right: auto; color: white; background-color: #222">
+    <div class = "container">
+      <span style = "float:left">
+        <b>Need help? Please contact us!</b>
+        <br>
+        Email: <a href="mailto:support@uowmail.edu.au">support@uowmail.edu.au</a> <br>
+        Hotline: +65 1234 5678<br>
+      </span>
+      <span style = "float:right; font-size: 0.9em"><br>Website belongs to C.M.R.K.S <br>Developed by Le Vu Nguyen Khanh</span>
+    </div>
+  </div>
+</footer>
+
+</html>
