@@ -6,7 +6,7 @@ This web application was developed as part of a group project in CSIT 214 IT Pro
 
 Developed by Le Vu Nguyen Khanh.  
 This was my first attempt at using Django so the structuring of the project was a bit messed up.  
-You can try the web application using my personally hosted website: https://214.thebottom.top/ or on HerokuApp at https://csit214.herokuapp.com/.  
+You can try the web application using my personally hosted website: https://214.khanhc.me/ or on HerokuApp at https://csit214.herokuapp.com/.  
 
 - Root account (has ALL permissions including account management):
 Username: root
